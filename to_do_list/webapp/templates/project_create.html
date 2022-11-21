@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content%}
+<form action="{% url 'project_create' %}" method="POST">
+    {% csrf_token %}
+    <div>
+        {% include 'partial/project_form.html' %}
+    </div>
+</form>
+{% endblock %}

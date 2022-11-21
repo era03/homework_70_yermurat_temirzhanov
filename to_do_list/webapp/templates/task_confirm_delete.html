@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card mx-auto mt-5v text-center" style="width: 50rem;">
+    <div class="card-body">
+        <h2 class="card-title">Are you really want to delete?</h2>
+        <h5 class="card-title">Name: {{task.task}}</h5>
+        <p class="card-text">Description: {{task.description}}</p>
+        {% for type in task.type.all %}
+        <span class="info-item">
+            <p>Types: {{type.type_name}}{% if not forloop.last %}, {% endif %}</p>
+        </span>
+        {% endfor %}
+        <p class="card-text">Status: {{task.status}}</p>
+        <p class="card-text">Date of create: {{task.created_at}}</p>
+        <div class="text-center">
+            <form action="{% url 'confirm_delete' task.pk %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Yes</button>
+                <a class="btn btn-primary" href="{% url 'index'%}">No</a>
+            </form>
+        </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'webapp',
     'bootstrap5',
     'accounts',
+    'api',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
